@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrepPath - Placement Prep Starter</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f4f6f9;
+        color: #333;
+    }
+
+    header {
+        background: #1e3a8a;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    section {
+        padding: 30px;
+        margin: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        color: #1e3a8a;
+    }
+
+    button {
+        padding: 10px 15px;
+        background: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background: #1d4ed8;
+    }
+
+    .roadmap-box {
+        margin-top: 15px;
+        padding: 15px;
+        background: #e0f2fe;
+        border-radius: 8px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 15px;
+        background: #1e3a8a;
+        color: white;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>PrepPath 🚀</h1>
+    <p>Smart Placement Prep Starter for First-Year Students</p>
+</header>
+
+<section>
+    <h2>📌 Problem Statement</h2>
+    <p>First-year students often feel confused and overwhelmed about placement preparation. 
+    They lack structured guidance, start too late, and follow random resources without a clear roadmap.</p>
+</section>
+
+<section>
+    <h2>💡 Our Solution</h2>
+    <ul>
+        <li>Personalized Roadmap Generator</li>
+        <li>Beginner-Friendly DSA Starter Plan</li>
+        <li>Resume Builder Guidance</li>
+        <li>Skill Gap Tracker</li>
+        <li>Mock Interviews & Aptitude Practice</li>
+    </ul>
+</section>
+
+<section>
+    <h2>🗺 Generate Your Roadmap</h2>
+
+    <label>Select Your Interest:</label><br>
+    <select id="interest">
+        <option value="software">Software Development</option>
+        <option value="core">Core Engineering</option>
+        <option value="higher">Higher Studies</option>
+    </select><br>
+
+    <button onclick="generateRoadmap()">Generate Plan</button>
+
+    <div id="roadmap" class="roadmap-box"></div>
+</section>
+
+<section>
+    <h2>📊 Skill Gap Tracker</h2>
+    <p>Mark skills you already know:</p>
+
+    <input type="checkbox" id="c"> C Programming<br>
+    <input type="checkbox" id="dsa"> Basic DSA<br>
+    <input type="checkbox" id="html"> HTML/CSS<br>
+    <input type="checkbox" id="projects"> Mini Projects<br>
+
+    <button onclick="checkSkills()">Check Missing Skills</button>
+
+    <div id="skillsResult" class="roadmap-box"></div>
+</section>
+
+<section>
+    <h2>🎤 Our Pitch</h2>
+    <p>“Most students begin placement preparation in their third year. 
+    PrepPath ensures students start smartly from their first year with structured guidance and personalized roadmaps.”</p>
+</section>
+
+<footer>
+    © 2026 PrepPath | Hackathon Project
+</footer>
+
+<script>
+function generateRoadmap() {
+    let interest = document.getElementById("interest").value;
+    let roadmapText = "";
+
+    if (interest === "software") {
+        roadmapText = `
+        Year 1: Learn C/Python + Basic DSA<br>
+        Year 2: Advanced DSA + Web Development<br>
+        Year 3: Projects + Internships + Mock Interviews
+        `;
+    }
+    else if (interest === "core") {
+        roadmapText = `
+        Year 1: Strong Basics in Core Subjects<br>
+        Year 2: Mini Core Projects<br>
+        Year 3: Internships + Technical Preparation
+        `;
+    }
+    else {
+        roadmapText = `
+        Year 1: Strengthen Fundamentals<br>
+        Year 2: Research Internships<br>
+        Year 3: GATE/GRE Preparation
+        `;
+    }
+
+    document.getElementById("roadmap").innerHTML = roadmapText;
+}
+
+function checkSkills() {
+    let missing = [];
+
+    if (!document.getElementById("c").checked) missing.push("C Programming");
+    if (!document.getElementById("dsa").checked) missing.push("Basic DSA");
+    if (!document.getElementById("html").checked) missing.push("HTML/CSS");
+    if (!document.getElementById("projects").checked) missing.push("Mini Projects");
+
+    if (missing.length === 0) {
+        document.getElementById("skillsResult").innerHTML = "🎉 Great! You are on the right track!";
+    } else {
+        document.getElementById("skillsResult").innerHTML = "You should focus on: <br>" + missing.join("<br>");
+    }
+}
+</script>
+
+</body>
+</html>
